@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'style.css') }}">
+</head>
+
+<body>
+    <div class=" container">
+
+        <h1> welcome to the Chat Box</h1>
+
+        <p class="tagline">
+            {% with messages = get_flashed_messages(with_categories = true)%}
+            {% if messages %}
+
+        <ul class="flashes">
+            {% for category, message in messages %}
+            <li class="{{category}}">{{message}}</li>
+            {% endfor %}
+        </ul>
+
+        {% endif %}
+        {% endwith %}
+
+        </p>
+
+        <form method = "POST" class="join-form">
+            <label for = "name"> What's your secret chat alias?</label>
+            <input type="text " id="name" name="name" placeholder="Hi there! Tell me your magical name ✨" required autofocus>
+            <label for = "room"> 🤖 Upload your bias — which chamber feels like home?</label>
+            <input type="text" id="room" name="room" placeholder="e.g..Blah Blah,Talk Shhh...">
+            <button type="submit">Enter the Room</button>
+        </form>
+        <p class="footer-note">
+            Powered by Flask & endless real-time fun!
+        </p>
+    </div>
+</body>
+</html>
