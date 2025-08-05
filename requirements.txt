@@ -1,3 +1,4 @@
-pip install flask
-pip freeze > requirements.txt
-pip install flash
+Flask
+gunicorn
+
+
